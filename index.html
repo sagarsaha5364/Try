@@ -1,793 +1,1952 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>If Wishes Could Kill S01 (2026) — Download</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --bg: #0a0b0f;
-    --surface: #111318;
-    --card: #161920;
-    --border: #1e2330;
-    --accent: #f5a623;
-    --accent2: #e05c5c;
-    --teal: #3dd6c0;
-    --blue: #5b8cf5;
-    --text: #e8eaf0;
-    --muted: #6b7280;
-    --soft: #9ca3af;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4KHDHub Clone</title>
+    <script>
+        ! function() {
+            try {
+                "light" === localStorage.getItem("theme") ? (document.documentElement.classList.remove(
+                    "dark"),
+                    document.documentElement.classList.add("light")) : (document.documentElement.classList.add(
+                    "dark"), document.documentElement.classList.remove("light"))
+            } catch (e) {}
+        }();
+    </script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/trebuchet-ms-2" rel="stylesheet">
+    <style>
+        /* ===== BASE ===== */
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 240 10% 3.9%;
+            --primary: 35 100% 55%;
+            --primary-foreground: 240 5.9% 10%;
+            --secondary: 210 100% 50%;
+            --secondary-foreground: 0 0% 98%;
+            --muted: 240 4.8% 95.9%;
+            --muted-foreground: 240 3.8% 46.1%;
+            --accent: 240 4.8% 95.9%;
+            --border: 240 5.9% 90%;
+            --radius: 0.5rem;
+        }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+        .dark {
+            --background: 240 10% 3.9%;
+            --foreground: 0 0% 98%;
+            --primary: 35 100% 55%;
+            --primary-foreground: 240 5.9% 10%;
+            --muted: 240 3.7% 15.9%;
+            --muted-foreground: 240 5% 84.9%;
+            --accent: 240 3.7% 15.9%;
+            --accent-foreground: 0 0% 98%;
+            --border: 240 3.7% 15.9%;
+        }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    min-height: 100vh;
-  }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
+            transition: background-color .3s ease, color .3s ease;
+        }
+        html.dark body {
+            background-color: #121212;
+            color: #fff;
+        }
+        html:not(.dark) body {
+            background-color: #fff;
+            color: #000;
+        }
+        html.dark main {
+            background: radial-gradient(at 0% 0%, #201a23 0%, #2c2a3d45 30%, #1d182096 70%);
+            background-color: #000;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
 
-  /* Subtle grain */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
+        /* ===== LAYOUT ===== */
+        .flex {
+            display: flex;
+        }
+        .flex-1 {
+            flex: 1 1 0%;
+        }
+        .flex-col {
+            flex-direction: column;
+        }
+        .items-center {
+            align-items: center;
+        }
+        .justify-between {
+            justify-content: space-between;
+        }
+        .gap-4 {
+            gap: 1rem;
+        }
+        .min-h-screen {
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: .5rem;
+            padding-right: .5rem;
+            max-width: 1400px;
+        }
+        @media(min-width:640px) {
+            .container {
+                max-width: 640px;
+            }
+        }
+        @media(min-width:768px) {
+            .container {
+                max-width: 768px;
+            }
+        }
+        @media(min-width:1024px) {
+            .container {
+                max-width: 1024px;
+            }
+        }
+        @media(min-width:1280px) {
+            .container {
+                max-width: 1280px;
+            }
+        }
+        @media(min-width:1536px) {
+            .container {
+                max-width: 1400px;
+            }
+        }
 
-  .wrapper {
-    max-width: 820px;
-    margin: 0 auto;
-    padding: 0 16px 60px;
-    position: relative;
-    z-index: 1;
-  }
+        /* ===== HEADER ===== */
+        .header {
+            background-color: #000;
+            border-bottom: 1px solid rgba(255, 255, 255, .1);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            transition: background-color .3s ease;
+        }
+        html.dark .header {
+            background-color: rgba(8, 8, 8, .8);
+            backdrop-filter: blur(16px);
+        }
+        html:not(.dark) .header {
+            background-color: #fff;
+            border-bottom-color: rgba(0, 0, 0, .1);
+        }
+        .navbar-brand>img {
+            display: block;
+            position: relative;
+            bottom: -5px;
+            height: 70px;
+            width: auto;
+            margin-top: -6px;
+        }
+        .h-14 {
+            height: 3.5rem;
+        }
+        .h-8 {
+            height: 2rem;
+        }
+        .w-auto {
+            width: auto;
+        }
 
-  /* HERO */
-  .hero {
-    padding: 32px 0 24px;
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 28px;
-    display: flex;
-    gap: 20px;
-    align-items: flex-start;
-  }
+        /* Menu toggle */
+        .menu-toggle {
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: .5rem;
+        }
+        html:not(.dark) .menu-toggle {
+            color: black;
+        }
+        @media(min-width:768px) {
+            .menu-toggle {
+                display: none !important;
+            }
+        }
 
-  .hero-poster {
-    width: 90px;
-    min-width: 90px;
-    height: 128px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, #1a1f2e 0%, #0d1117 100%);
-    border: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-  }
+        /* Nav */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 280px;
+            height: 100%;
+            z-index: 55;
+            padding: 4rem 1rem 1rem;
+            transform: translateX(-100%);
+            transition: transform .3s ease;
+            overflow-y: auto;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+        }
+        html.dark .main-nav {
+            background-color: rgba(10, 10, 10, .96);
+        }
+        html:not(.dark) .main-nav {
+            background-color: #fff;
+        }
+        .main-nav.open {
+            transform: translateX(0);
+            backdrop-filter: blur(16px);
+        }
+        @media(min-width:768px) {
+            .main-nav {
+                position: static;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+                padding: 0;
+                transform: none;
+                box-shadow: none;
+                overflow-y: visible;
+                display: flex;
+                flex: 1;
+                margin-left: 2rem;
+            }
+        }
+        .nav-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+        }
+        @media(max-width:767px) {
+            .nav-list {
+                display: flex;
+                flex-direction: column;
+                gap: .5rem;
+            }
+        }
+        @media(min-width:768px) {
+            .nav-list {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+        .nav-item {
+            position: relative;
+        }
+        .nav-link {
+            display: flex;
+            align-items: center;
+            position: relative;
+            color: white;
+            font-size: 1.1rem;
+            transition: color .2s ease;
+            font-weight: 700;
+        }
+        html:not(.dark) .nav-link {
+            color: black;
+        }
+        @media(max-width:767px) {
+            .nav-link {
+                padding: .875rem 1rem;
+                border-radius: .375rem;
+                font-weight: 500;
+                justify-content: space-between;
+            }
+        }
+        @media(min-width:768px) {
+            .nav-link {
+                padding: 0 .75rem;
+                height: 56px;
+            }
+        }
+        .nav-link:hover {
+            color: #ff9800;
+        }
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-indicator {
+            margin-left: .25rem;
+            transition: transform .2s ease;
+        }
+        @media(max-width:767px) {
+            .dropdown-menu {
+                display: none;
+                padding-left: 1rem;
+                margin-left: 1rem;
+                border-left: 2px solid rgba(255, 255, 255, .1);
+            }
+            html:not(.dark) .dropdown-menu {
+                border-left-color: rgba(0, 0, 0, .1);
+            }
+            .dropdown-menu.open {
+                display: block;
+            }
+        }
+        @media(min-width:768px) {
+            .dropdown-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 200px;
+                background-color: #000;
+                border: 1px solid rgba(255, 255, 255, .1);
+                border-radius: .25rem;
+                padding: .5rem 0;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, .1);
+                z-index: 50;
+                display: none;
+            }
+            html:not(.dark) .dropdown-menu {
+                background-color: #fff;
+                border-color: rgba(0, 0, 0, .1);
+            }
+            .dropdown:hover .dropdown-menu {
+                display: block;
+            }
+        }
+        .dropdown-menu {
+            list-style-type: none;
+        }
+        .dropdown-menu li {
+            list-style: none;
+        }
+        .dropdown-item {
+            display: block;
+            padding: .5rem 1rem;
+            color: rgba(255, 255, 255, .8);
+            font-size: .875rem;
+        }
+        html:not(.dark) .dropdown-item {
+            color: rgba(0, 0, 0, .8);
+        }
+        .dropdown-item:hover {
+            color: #ff9800;
+        }
 
-  .hero-poster-text {
-    font-family: 'Syne', sans-serif;
-    font-size: 10px;
-    font-weight: 800;
-    text-align: center;
-    color: var(--accent);
-    line-height: 1.3;
-    padding: 8px;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-  }
+        /* Search */
+        .search-toggle {
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: .5rem;
+        }
+        html:not(.dark) .search-toggle {
+            color: black;
+        }
+        .search-container {
+            position: relative;
+            margin-left: auto;
+            margin-right: .5rem;
+            display: none;
+        }
+        @media(min-width:768px) {
+            .search-container {
+                display: flex;
+                align-items: center;
+            }
+        }
+        .search-input {
+            background-color: rgba(255, 255, 255, .1);
+            border: none;
+            border-radius: .375rem;
+            color: white;
+            padding: .5rem .75rem .5rem 2.5rem;
+            width: 250px;
+            font-size: .875rem;
+        }
+        html:not(.dark) .search-input {
+            background-color: rgba(0, 0, 0, .1);
+            color: black;
+        }
+        .search-input::placeholder {
+            color: rgba(255, 255, 255, .5);
+        }
+        html:not(.dark) .search-input::placeholder {
+            color: rgba(0, 0, 0, .5);
+        }
+        .search-icon {
+            position: absolute;
+            left: .75rem;
+            color: rgba(255, 255, 255, .7);
+        }
+        html:not(.dark) .search-icon {
+            color: rgba(0, 0, 0, .7);
+        }
+        #search-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        html.dark #search-overlay {
+            backdrop-filter: blur(10px);
+            background-color: rgb(0 0 0/46%);
+        }
+        html:not(.dark) #search-overlay {
+            background-color: rgba(255, 255, 255, .95);
+        }
+        .search-form {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            margin-bottom: 20rem;
+        }
+        .search-input-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        .search-icon-overlay {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, .7);
+            height: 1rem;
+            width: 1rem;
+        }
+        html:not(.dark) .search-icon-overlay {
+            color: rgba(0, 0, 0, .7);
+        }
+        .search-input-overlay {
+            width: 100%;
+            padding: .75rem 1rem .75rem 2.5rem;
+            background-color: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(255, 255, 255, .2);
+            border-radius: .375rem;
+            color: white;
+            font-size: 1rem;
+        }
+        html:not(.dark) .search-input-overlay {
+            background-color: rgba(0, 0, 0, .05);
+            border: 1px solid rgba(0, 0, 0, .2);
+            color: #333;
+        }
+        .search-input-overlay::placeholder {
+            color: rgba(255, 255, 255, .5);
+        }
+        .search-submit {
+            width: 100%;
+            background-color: #ff9800;
+            color: black;
+            border: none;
+            border-radius: .375rem;
+            padding: .75rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
 
-  .hero-info { flex: 1; }
+        /* Theme toggle */
+        .theme-toggle {
+            color: white;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        html:not(.dark) .theme-toggle {
+            color: black;
+        }
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, .1);
+            border-radius: 9999px;
+        }
+        html:not(.dark) .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, .1);
+        }
+        .h-5 {
+            height: 1.25rem;
+        }
+        .w-5 {
+            width: 1.25rem;
+        }
+        .h-4 {
+            height: 1rem;
+        }
+        .w-4 {
+            width: 1rem;
+        }
 
-  .hero-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    color: #fff;
-    line-height: 1.2;
-    margin-bottom: 6px;
-    letter-spacing: -0.3px;
-  }
+        /* Mobile backdrop / close */
+        #mobile-menu-backdrop {
+            background-color: rgba(0, 0, 0, .7);
+        }
 
-  .hero-title span {
-    color: var(--muted);
-    font-weight: 400;
-    font-size: 16px;
-  }
+        /* ===== MAIN CONTENT ===== */
+        .latest-releases {
+            padding: 0;
+            margin-top: 2rem;
+        }
+        .latest-releases-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .latest-releases-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        html:not(.dark) .latest-releases-title {
+            color: #000;
+        }
 
-  .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 10px;
-  }
+        /* Card grid */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.5rem;
+            padding: 5px;
+        }
+        @media(min-width:640px) {
+            .card-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        @media(min-width:768px) {
+            .card-grid {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+            }
+        }
+        @media(min-width:1024px) {
+            .card-grid {
+                grid-template-columns: repeat(5, minmax(0, 1fr));
+            }
+        }
+        @media(min-width:1280px) {
+            .card-grid {
+                grid-template-columns: repeat(6, minmax(0, 1fr));
+                gap: 25px;
+            }
+        }
 
-  .badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    padding: 3px 9px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 500;
-    font-family: 'DM Mono', monospace;
-    letter-spacing: 0.3px;
-  }
+        /* Movie card */
+        .movie-card {
+            position: relative;
+            border-radius: calc(.5rem - 2px);
+            overflow: hidden;
+            background-color: #1a1a1a40;
+            transition: transform .2s ease;
+            display: block;
+            cursor: pointer;
+        }
+        html:not(.dark) .movie-card {
+            background-color: #f5f5f5;
+        }
+        .movie-card:hover {
+            transform: translateY(-5px);
+        }
+        .movie-card-image {
+            position: relative;
+            aspect-ratio: 2/3;
+            overflow: hidden;
+        }
+        .movie-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .movie-card-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, .8), transparent);
+            padding: 1rem;
+            opacity: 0;
+            transition: opacity .2s ease;
+        }
+        .movie-card:hover .movie-card-overlay {
+            opacity: 1;
+        }
+        .movie-card-formats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .25rem;
+        }
+        .movie-card-format {
+            backdrop-filter: blur(5px);
+            background-color: rgb(241 199 199/35%);
+            color: white;
+            font-size: .625rem;
+            padding: .125rem .375rem;
+            border-radius: .25rem;
+        }
+        .movie-card-content {
+            padding: .7rem;
+            padding-top: .5rem;
+        }
+        .movie-card-title {
+            font-weight: 600;
+            margin-bottom: .25rem;
+            color: white;
+            white-space: normal;
+            overflow: visible;
+            line-height: 1.3;
+            word-break: break-word;
+            font-size: 1.095rem;
+            text-align: left;
+        }
+        html:not(.dark) .movie-card-title {
+            color: #333;
+        }
+        .movie-card-meta {
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .7);
+            padding-top: .4rem;
+        }
+        html:not(.dark) .movie-card-meta {
+            color: rgba(0, 0, 0, .7);
+        }
 
-  .badge-season { background: rgba(91,140,245,0.15); color: var(--blue); border: 1px solid rgba(91,140,245,0.3); }
-  .badge-lang { background: rgba(61,214,192,0.1); color: var(--teal); border: 1px solid rgba(61,214,192,0.25); }
-  .badge-src { background: rgba(245,166,35,0.1); color: var(--accent); border: 1px solid rgba(245,166,35,0.25); }
+        /* Quality badges */
+        .quality-badges {
+            position: absolute;
+            top: 6px;
+            right: 6px;
+            display: flex;
+            flex-direction: row;
+            gap: 3px;
+            z-index: 10;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            max-width: 85%;
+        }
+        .quality-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2px 5px;
+            border-radius: 2px;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: .3px;
+            line-height: 1;
+            text-transform: uppercase;
+            backdrop-filter: blur(4px);
+            transition: all .15s ease;
+        }
+        .badge-4k {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            color: #000;
+            border: 1px solid rgba(251, 191, 36, .5);
+            box-shadow: 0 1px 3px rgba(217, 119, 6, .5);
+        }
+        .badge-fhd {
+            background: rgba(40, 40, 50, .9);
+            color: rgba(255, 255, 255, .8);
+            border: 1px solid rgba(255, 255, 255, .12);
+        }
+        .badge-hdr {
+            background: linear-gradient(135deg, #b91c1c 0%, #dc2626 100%);
+            color: #fff;
+            border: 1px solid rgba(220, 38, 38, .4);
+            box-shadow: 0 1px 3px rgba(185, 28, 28, .4);
+        }
+        .badge-dv {
+            background: #000;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, .3);
+            padding: 2px 4px;
+        }
+        .badge-bd {
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+            color: #fff;
+            border: 1px solid rgba(59, 130, 246, .4);
+        }
+        .badge-remux {
+            background: linear-gradient(135deg, #6b21a8 0%, #9333ea 100%);
+            color: #fff;
+            border: 1px solid rgba(147, 51, 234, .4);
+        }
+        .badge-imax {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+            color: #fff;
+            border: 1px solid rgba(37, 99, 235, .5);
+            font-weight: 800;
+            letter-spacing: .5px;
+        }
+        .quality-badge:hover {
+            transform: translateY(-1px);
+            filter: brightness(1.1);
+        }
 
-  /* AUDIO ROW */
-  .audio-row {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 14px 16px;
-    margin-bottom: 28px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
+        /* Pagination */
+        .pagination-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .pagination {
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pagination-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 2.5rem;
+            height: 2.5rem;
+            padding: 0 .75rem;
+            border-radius: .375rem;
+            border: 1px solid hsl(var(--border));
+            background-color: transparent;
+            color: hsl(var(--foreground));
+            font-size: .875rem;
+            font-weight: 500;
+            transition: all .2s ease;
+            cursor: pointer;
+        }
+        .pagination-item:hover {
+            background-color: hsl(var(--accent));
+            color: hsl(var(--accent-foreground));
+        }
+        .pagination-item.active {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            border-color: hsl(var(--primary));
+        }
+        .pagination-next,
+        .pagination-prev {
+            padding: 0;
+            width: 2.5rem;
+        }
 
-  .audio-label {
-    font-size: 11px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-family: 'DM Mono', monospace;
-  }
+        /* Footer */
+        .border-t {
+            border-top: 1px solid hsl(var(--border));
+        }
+        .bg-background {
+            background-color: #000;
+        }
+        html.dark .bg-background {
+            background-color: #121212;
+        }
+        html:not(.dark) .bg-background {
+            background-color: #fff;
+        }
+        .text-muted-foreground {
+            color: hsl(var(--muted-foreground));
+        }
 
-  .audio-langs {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-  }
+        /* Back to top */
+        #back-to-top {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 50;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .1);
+            transition: opacity .3s ease;
+            opacity: 0;
+            pointer-events: none;
+            background-color: #ff9800;
+            color: black;
+            padding: .5rem;
+            border: none;
+            cursor: pointer;
+        }
 
-  .lang-chip {
-    padding: 2px 10px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 500;
-  }
+        /* focus reset */
+        *:focus {
+            outline: none;
+            box-shadow: none;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-  .lang-hi { background: rgba(255,153,0,0.15); color: #ffaa33; }
-  .lang-te { background: rgba(100,200,120,0.12); color: #6bc97e; }
-  .lang-en { background: rgba(91,140,245,0.12); color: #7da8f7; }
-  .lang-ko { background: rgba(200,100,180,0.12); color: #d67bc9; }
+        /* ===== FETCH UI ===== */
+        .fetch-bar {
+            background: linear-gradient(135deg, rgba(255, 152, 0, .12), rgba(255, 152, 0, .05));
+            border: 1px solid rgba(255, 152, 0, .3);
+            border-radius: 12px;
+            padding: 1rem 1.25rem;
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+            align-items: center;
+        }
+        html:not(.dark) .fetch-bar {
+            background: linear-gradient(135deg, rgba(255, 152, 0, .08), rgba(255, 152, 0, .03));
+            border-color: rgba(255, 152, 0, .4);
+        }
+        .fetch-bar input[type=text] {
+            flex: 1;
+            min-width: 200px;
+            background: rgba(255, 255, 255, .07);
+            border: 1px solid rgba(255, 255, 255, .15);
+            border-radius: 8px;
+            color: #fff;
+            padding: .55rem .9rem;
+            font-size: .875rem;
+            font-family: 'Open Sans', sans-serif;
+        }
+        html:not(.dark) .fetch-bar input[type=text] {
+            background: rgba(0, 0, 0, .05);
+            border-color: rgba(0, 0, 0, .2);
+            color: #000;
+        }
+        .fetch-bar input[type=text]::placeholder {
+            color: rgba(255, 255, 255, .35);
+        }
+        html:not(.dark) .fetch-bar input[type=text]::placeholder {
+            color: rgba(0, 0, 0, .35);
+        }
+        .btn-fetch {
+            background: #ff9800;
+            color: #000;
+            border: none;
+            border-radius: 8px;
+            padding: .55rem 1.2rem;
+            font-weight: 700;
+            font-size: .875rem;
+            cursor: pointer;
+            font-family: 'Open Sans', sans-serif;
+            transition: background .2s;
+            white-space: nowrap;
+        }
+        .btn-fetch:hover {
+            background: #e68900;
+        }
+        .btn-fetch:disabled {
+            background: #555;
+            color: #888;
+            cursor: not-allowed;
+        }
+        .fetch-status {
+            font-size: .8rem;
+            color: rgba(255, 255, 255, .55);
+            width: 100%;
+        }
+        html:not(.dark) .fetch-status {
+            color: rgba(0, 0, 0, .55);
+        }
 
-  /* SECTION HEADERS */
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
+        /* Skeleton loader */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(255, 255, 255, .06) 25%, rgba(255, 255, 255, .12) 50%, rgba(255, 255, 255, .06) 75%);
+            background-size: 200% 100%;
+            animation: shimmer 1.4s infinite;
+        }
+        html:not(.dark) .skeleton {
+            background: linear-gradient(90deg, rgba(0, 0, 0, .06) 25%, rgba(0, 0, 0, .1) 50%, rgba(0, 0, 0, .06) 75%);
+            background-size: 200% 100%;
+        }
+        @keyframes shimmer {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+        .skeleton-card {
+            border-radius: calc(.5rem - 2px);
+            overflow: hidden;
+        }
+        .skeleton-img {
+            aspect-ratio: 2/3;
+            width: 100%;
+        }
+        .skeleton-text {
+            height: .75rem;
+            border-radius: 4px;
+            margin: .5rem .7rem .25rem;
+            width: 80%;
+        }
+        .skeleton-text2 {
+            height: .6rem;
+            border-radius: 4px;
+            margin: .25rem .7rem .7rem;
+            width: 50%;
+        }
 
-  .section-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--soft);
-  }
+        /* Decode button */
+        .decode-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 11px;
+            background: rgba(255, 152, 0, .12);
+            border: 1px solid rgba(255, 152, 0, .3);
+            border-radius: 6px;
+            color: #ff9800;
+            font-size: .72rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .15s;
+        }
+        .decode-btn:hover {
+            background: rgba(255, 152, 0, .22);
+            border-color: #ff9800;
+        }
+        .decode-btn.loading {
+            opacity: .6;
+            cursor: wait;
+        }
+        .real-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 5px 11px;
+            background: rgba(34, 197, 94, .12);
+            border: 1px solid rgba(34, 197, 94, .3);
+            border-radius: 6px;
+            color: #22c55e;
+            font-size: .72rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .real-link:hover {
+            background: rgba(34, 197, 94, .22);
+        }
+        .decode-fail {
+            font-size: .72rem;
+            color: #f87171;
+        }
 
-  .section-count {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    padding: 1px 8px;
-    font-size: 11px;
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-  }
+        /* Inline spinner */
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .spinner {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border: 2px solid rgba(255, 152, 0, .3);
+            border-top-color: #ff9800;
+            border-radius: 50%;
+            animation: spin .7s linear infinite;
+        }
 
-  .section-line {
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-
-  /* DOWNLOAD CARD */
-  .dl-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    margin-bottom: 12px;
-    overflow: hidden;
-    transition: border-color 0.2s;
-  }
-
-  .dl-card:hover { border-color: #2a3040; }
-
-  .dl-card-head {
-    padding: 14px 16px;
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .dl-card-head:hover { background: rgba(255,255,255,0.02); }
-
-  .quality-badge {
-    font-family: 'Syne', sans-serif;
-    font-size: 11px;
-    font-weight: 800;
-    padding: 3px 8px;
-    border-radius: 6px;
-    min-width: 46px;
-    text-align: center;
-    flex-shrink: 0;
-  }
-
-  .q-2160 { background: rgba(245,166,35,0.15); color: var(--accent); border: 1px solid rgba(245,166,35,0.3); }
-  .q-1080 { background: rgba(91,140,245,0.15); color: var(--blue); border: 1px solid rgba(91,140,245,0.3); }
-  .q-720  { background: rgba(61,214,192,0.12); color: var(--teal); border: 1px solid rgba(61,214,192,0.25); }
-
-  .dl-card-info { flex: 1; min-width: 0; }
-
-  .dl-card-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 5px;
-    line-height: 1.4;
-  }
-
-  .dl-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-  }
-
-  .tag {
-    padding: 2px 7px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-family: 'DM Mono', monospace;
-    font-weight: 500;
-  }
-
-  .tag-dovi { background: rgba(224,92,92,0.15); color: #e07c7c; }
-  .tag-hevc { background: rgba(100,180,140,0.13); color: #7dcba5; }
-  .tag-avc  { background: rgba(91,140,245,0.13); color: #8ab2f8; }
-  .tag-hdr  { background: rgba(255,200,80,0.12); color: #ffd060; }
-  .tag-sdr  { background: rgba(160,160,160,0.1); color: #a0a0a0; }
-  .tag-webdl { background: rgba(80,160,220,0.1); color: #80b4dc; }
-  .tag-nf   { background: rgba(229,9,20,0.15); color: #f56060; }
-
-  .dl-card-size {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--accent);
-    font-weight: 500;
-    flex-shrink: 0;
-    padding-top: 2px;
-  }
-
-  .chevron {
-    color: var(--muted);
-    font-size: 16px;
-    flex-shrink: 0;
-    padding-top: 2px;
-    transition: transform 0.25s;
-  }
-
-  .dl-card.open .chevron { transform: rotate(180deg); }
-
-  /* EXPANDED CONTENT */
-  .dl-body {
-    display: none;
-    border-top: 1px solid var(--border);
-    padding: 16px;
-  }
-
-  .dl-card.open .dl-body { display: block; }
-
-  .filename-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 10px 12px;
-    margin-bottom: 14px;
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    color: var(--soft);
-    word-break: break-all;
-    line-height: 1.5;
-  }
-
-  .filename-label {
-    font-size: 10px;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    margin-bottom: 4px;
-  }
-
-  .meta-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-bottom: 16px;
-    font-size: 12px;
-  }
-
-  .meta-item { display: flex; gap: 6px; align-items: center; }
-  .meta-key { color: var(--muted); }
-  .meta-val { color: var(--text); font-weight: 500; }
-
-  .dl-links {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-  }
-
-  .dl-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 11px 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    font-family: 'Syne', sans-serif;
-    transition: all 0.18s;
-    letter-spacing: 0.2px;
-  }
-
-  .btn-hubcloud {
-    background: linear-gradient(135deg, rgba(245,166,35,0.15), rgba(245,166,35,0.08));
-    border: 1px solid rgba(245,166,35,0.35);
-    color: var(--accent);
-  }
-
-  .btn-hubcloud:hover {
-    background: linear-gradient(135deg, rgba(245,166,35,0.25), rgba(245,166,35,0.15));
-    border-color: var(--accent);
-  }
-
-  .btn-hubdrive {
-    background: linear-gradient(135deg, rgba(91,140,245,0.15), rgba(91,140,245,0.08));
-    border: 1px solid rgba(91,140,245,0.35);
-    color: var(--blue);
-  }
-
-  .btn-hubdrive:hover {
-    background: linear-gradient(135deg, rgba(91,140,245,0.25), rgba(91,140,245,0.15));
-    border-color: var(--blue);
-  }
-
-  /* TELEGRAPH / SINGLE EPS CARD */
-  .ep-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .ep-card-info { flex: 1; }
-
-  .ep-card-name {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 5px;
-  }
-
-  .ep-card-sub {
-    font-size: 11px;
-    color: var(--muted);
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-  }
-
-  .ep-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    padding: 7px 14px;
-    border-radius: 8px;
-    background: rgba(61,214,192,0.1);
-    border: 1px solid rgba(61,214,192,0.25);
-    color: var(--teal);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 600;
-    font-family: 'Syne', sans-serif;
-    white-space: nowrap;
-    transition: all 0.18s;
-    flex-shrink: 0;
-  }
-
-  .ep-link:hover {
-    background: rgba(61,214,192,0.18);
-    border-color: var(--teal);
-  }
-
-  /* DIVIDER */
-  .section-gap { margin-bottom: 32px; }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    padding: 24px 0;
-    border-top: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 12px;
-    font-family: 'DM Mono', monospace;
-  }
-
-  @media (max-width: 480px) {
-    .hero { flex-direction: column; }
-    .dl-links { grid-template-columns: 1fr; }
-    .hero-title { font-size: 18px; }
-  }
-</style>
+        /* Proxy info banner */
+        .proxy-info {
+            background: rgba(255, 255, 255, .03);
+            border: 1px solid rgba(255, 255, 255, .06);
+            border-radius: 8px;
+            padding: .6rem 1rem;
+            margin-top: .75rem;
+            font-size: .72rem;
+            color: rgba(255, 255, 255, .45);
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            flex-wrap: wrap;
+        }
+        html:not(.dark) .proxy-info {
+            color: rgba(0, 0, 0, .5);
+            background: rgba(0, 0, 0, .02);
+            border-color: rgba(0, 0, 0, .08);
+        }
+        .proxy-info a {
+            color: #ff9800;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .proxy-info a:hover {
+            color: #e68900;
+        }
+    </style>
 </head>
 <body>
-<div class="wrapper">
+    <div class="flex min-h-screen flex-col">
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-poster">
-      <div class="hero-poster-text">IF WISHES COULD KILL</div>
-    </div>
-    <div class="hero-info">
-      <div class="hero-title">If Wishes Could Kill <span>(2026)</span></div>
-      <div class="hero-meta">
-        <span class="badge badge-season">S01</span>
-        <span class="badge badge-src">NF WEB-DL</span>
-        <span class="badge badge-lang">Multi-Audio</span>
-      </div>
-    </div>
-  </div>
+        <!-- HEADER -->
+        <header class="sticky top-0 z-50 w-full">
+            <div class="header">
+                <div class="container flex h-14 items-center justify-between">
+                    <div class="flex items-center">
+                        <button id="menu-toggle" class="menu-toggle md:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                            <span class="sr-only">Toggle menu</span>
+                        </button>
+                        <a href="#" class="navbar-brand" aria-label="4KHDHub Home">
+                            <img id="logo" class="h-8 w-auto" src="https://4khdhub.click/images/4KHDHUB-Bright-Logo.png" alt="4KHDHub logo">
+                        </a>
+                    </div>
 
-  <!-- AUDIO -->
-  <div class="audio-row">
-    <span class="audio-label">🗣 Audios</span>
-    <div class="audio-langs">
-      <span class="lang-chip lang-hi">Hindi</span>
-      <span class="lang-chip lang-te">Telugu</span>
-      <span class="lang-chip lang-en">English</span>
-      <span class="lang-chip lang-ko">Korean</span>
-    </div>
-  </div>
+                    <nav id="main-nav" class="main-nav">
+                        <ul class="nav-list">
+                            <li class="nav-item"><a href="https://4khdhub.click/" class="nav-link" target="_blank">Home</a></li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle">Movies
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-indicator h-4 w-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://4khdhub.click/category/movies/" class="dropdown-item" target="_blank">Latest Movies</a></li>
+                                    <li><a href="https://4khdhub.click/category/hindi-movies/" class="dropdown-item" target="_blank">Hindi Movies</a></li>
+                                    <li><a href="https://4khdhub.click/category/english-movies/" class="dropdown-item" target="_blank">English Movies</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle">Web Series
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-indicator h-4 w-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://4khdhub.click/category/series/" class="dropdown-item" target="_blank">Latest Episodes</a></li>
+                                    <li><a href="https://4khdhub.click/category/korean-series/" class="dropdown-item" target="_blank">Korean</a></li>
+                                    <li><a href="https://4khdhub.click/category/hindi-series/" class="dropdown-item" target="_blank">Hindi Series</a></li>
+                                    <li><a href="https://4khdhub.click/category/english-series/" class="dropdown-item" target="_blank">English Series</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle">OTT
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="dropdown-indicator h-4 w-4"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://4khdhub.click/category/netflix/" class="dropdown-item" target="_blank">Netflix</a></li>
+                                    <li><a href="https://4khdhub.click/category/amazon_prime_video/" class="dropdown-item" target="_blank">Amazon Prime</a></li>
+                                    <li><a href="https://4khdhub.click/category/disney/" class="dropdown-item" target="_blank">Disney+</a></li>
+                                    <li><a href="https://4khdhub.click/category/apple_tv/" class="dropdown-item" target="_blank">Apple TV+</a></li>
+                                    <li><a href="https://4khdhub.click/category/hbo_max/" class="dropdown-item" target="_blank">HBO Max</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a href="https://4khdhub.click/category/anime/" class="nav-link" target="_blank">Anime</a></li>
+                            <li class="nav-item"><a href="https://4khdhub.click/category/2160p-HDR/" class="nav-link" target="_blank">4K HDR</a></li>
+                            <li class="nav-item"><a href="https://4khdhub.click/category/imdb/" class="nav-link" target="_blank">Top IMdb</a></li>
+                        </ul>
+                    </nav>
 
-  <!-- ZIP / SEASON PACKS -->
-  <div class="section-gap">
-    <div class="section-header">
-      <span class="section-title">📦 Zip / Season Packs</span>
-      <span class="section-count">7 Quality's</span>
-      <div class="section-line"></div>
-    </div>
+                    <div class="flex items-center">
+                        <button id="search-toggle" class="search-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                            <span class="sr-only">Search</span>
+                        </button>
+                        <button id="theme-toggle" class="theme-toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon h-5 w-5">
+                                <circle cx="12" cy="12" r="5"></circle>
+                                <line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                                <line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                            </svg>
+                            <span class="sr-only">Toggle theme</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Pack 1 -->
-    <div class="dl-card open" onclick="toggleCard(this)">
-      <div class="dl-card-head">
-        <span class="quality-badge q-2160">2160p</span>
-        <div class="dl-card-info">
-          <div class="dl-card-name">If Wishes Could Kill S01</div>
-          <div class="dl-card-tags">
-            <span class="tag tag-nf">NF</span>
-            <span class="tag tag-webdl">WEB-DL</span>
-            <span class="tag tag-dovi">DoVi</span>
-            <span class="tag tag-hdr">HDR</span>
-            <span class="tag tag-hevc">HEVC</span>
-          </div>
-        </div>
-        <span class="dl-card-size">53.81 GB</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="dl-body">
-        <div class="filename-box">
-          <div class="filename-label">Filename</div>
-          If Wishes Could Kill (2026) S01 2160p NF 10bit WEB-DL DoVi HDR HEVC [Hindi-Telugu-English DDP 5.1 + Korean DDP Atmos 5.1] H.265 (HHWEB-Ionicboy).zip
-        </div>
-        <div class="meta-row">
-          <div class="meta-item"><span class="meta-key">Quality</span><span class="meta-val">2160p</span></div>
-          <div class="meta-item"><span class="meta-key">Source</span><span class="meta-val">NF WEB-DL</span></div>
-          <div class="meta-item"><span class="meta-key">Audio</span><span class="meta-val">Hindi, Telugu, English, Korean</span></div>
-        </div>
-        <div class="dl-links">
-          <a href="https://hubcloud.foo/drive/qanv90ibaw8b0h0" class="dl-btn btn-hubcloud">☁ HubCloud</a>
-          <a href="https://hubdrive.space/file/7817784756" class="dl-btn btn-hubdrive">💾 HubDrive</a>
-        </div>
-      </div>
-    </div>
+            <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/70 hidden"></div>
+            <button id="close-mobile-menu" class="fixed top-4 right-4 p-2 rounded-full z-[60] hidden" style="background:rgba(0,0,0,.5);color:white;border:none;cursor:pointer;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
 
-    <!-- Pack 2 -->
-    <div class="dl-card" onclick="toggleCard(this)">
-      <div class="dl-card-head">
-        <span class="quality-badge q-2160">2160p</span>
-        <div class="dl-card-info">
-          <div class="dl-card-name">If Wishes Could Kill S01</div>
-          <div class="dl-card-tags">
-            <span class="tag tag-nf">NF</span>
-            <span class="tag tag-webdl">WEB-DL</span>
-            <span class="tag tag-sdr">SDR</span>
-            <span class="tag tag-hevc">HEVC</span>
-          </div>
-        </div>
-        <span class="dl-card-size">47.56 GB</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="dl-body">
-        <div class="filename-box">
-          <div class="filename-label">Filename</div>
-          If Wishes Could Kill (2026) S01 2160p NF 10bit WEB-DL SDR HEVC [Hindi-Telugu-English DDP 5.1 + Korean DDP Atmos 5.1] H.265 (HHWEB-Ionicboy).zip
-        </div>
-        <div class="meta-row">
-          <div class="meta-item"><span class="meta-key">Quality</span><span class="meta-val">2160p</span></div>
-          <div class="meta-item"><span class="meta-key">Source</span><span class="meta-val">NF WEB-DL</span></div>
-          <div class="meta-item"><span class="meta-key">Audio</span><span class="meta-val">Hindi, Telugu, English, Korean</span></div>
-        </div>
-        <div class="dl-links">
-          <a href="https://hubcloud.foo/drive/ug5kwabfciubibc" class="dl-btn btn-hubcloud">☁ HubCloud</a>
-          <a href="https://hubdrive.space/file/17908585119" class="dl-btn btn-hubdrive">💾 HubDrive</a>
-        </div>
-      </div>
-    </div>
+            <div id="search-overlay" class="fixed inset-0 z-50 hidden" style="display:none!important;">
+                <button id="close-search" style="position:absolute;right:1rem;top:1rem;background:transparent;border:none;color:white;cursor:pointer;padding:.5rem;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+                <form id="search-form-el" class="search-form">
+                    <div class="search-input-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="search-icon-overlay" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                        <input type="search" id="search-main-input" name="s" placeholder="Search Movies & TV-Shows" class="search-input-overlay" autocomplete="off">
+                    </div>
+                    <button type="submit" class="search-submit">Search on 4KHDHub</button>
+                </form>
+            </div>
+        </header>
 
-    <!-- Pack 3 -->
-    <div class="dl-card" onclick="toggleCard(this)">
-      <div class="dl-card-head">
-        <span class="quality-badge q-1080">1080p</span>
-        <div class="dl-card-info">
-          <div class="dl-card-name">If Wishes Could Kill S01 AVC</div>
-          <div class="dl-card-tags">
-            <span class="tag tag-nf">NF</span>
-            <span class="tag tag-webdl">WEB-DL</span>
-            <span class="tag tag-avc">H264</span>
-          </div>
-        </div>
-        <span class="dl-card-size">21.59 GB</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="dl-body">
-        <div class="filename-box">
-          <div class="filename-label">Filename</div>
-          If.Wishes.Could.Kill.S01.1080p.NF.WEB-DL.Multi.DDP5.1.H.264-4kHdHub.Com.zip
-        </div>
-        <div class="meta-row">
-          <div class="meta-item"><span class="meta-key">Quality</span><span class="meta-val">1080p</span></div>
-          <div class="meta-item"><span class="meta-key">Source</span><span class="meta-val">NF WEB-DL</span></div>
-          <div class="meta-item"><span class="meta-key">Audio</span><span class="meta-val">Hindi, Telugu, English, Korean</span></div>
-        </div>
-        <div class="dl-links">
-          <a href="https://hubcloud.foo/drive/tuuy1pn719ivbek" class="dl-btn btn-hubcloud">☁ HubCloud</a>
-          <a href="https://hubdrive.space/file/16908822250" class="dl-btn btn-hubdrive">💾 HubDrive</a>
-        </div>
-      </div>
-    </div>
+        <!-- MAIN -->
+        <main class="flex-1">
+            <div class="container">
 
-    <!-- Pack 4 -->
-    <div class="dl-card" onclick="toggleCard(this)">
-      <div class="dl-card-head">
-        <span class="quality-badge q-1080">1080p</span>
-        <div class="dl-card-info">
-          <div class="dl-card-name">If Wishes Could Kill S01 DoVi-HDR</div>
-          <div class="dl-card-tags">
-            <span class="tag tag-nf">NF</span>
-            <span class="tag tag-webdl">WEB-DL</span>
-            <span class="tag tag-dovi">DoVi</span>
-            <span class="tag tag-hdr">HDR</span>
-            <span class="tag tag-hevc">H265</span>
-          </div>
-        </div>
-        <span class="dl-card-size">14.21 GB</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="dl-body">
-        <div class="filename-box">
-          <div class="filename-label">Filename</div>
-          If.Wishes.Could.Kill.S01.1080p.NF.WEB-DL.Multi.DDP5.1.HDR-DV.H.265-4kHdHub.Com.zip
-        </div>
-        <div class="meta-row">
-          <div class="meta-item"><span class="meta-key">Quality</span><span class="meta-val">1080p</span></div>
-          <div class="meta-item"><span class="meta-key">Source</span><span class="meta-val">NF WEB-DL</span></div>
-          <div class="meta-item"><span class="meta-key">Audio</span><span class="meta-val">Hindi, Telugu, English, Korean</span></div>
-        </div>
-        <div class="dl-links">
-          <a href="https://hubcloud.foo/drive/5aclgoan5o1o1ao" class="dl-btn btn-hubcloud">☁ HubCloud</a>
-          <a href="https://hubdrive.space/file/7438412092" class="dl-btn btn-hubdrive">💾 HubDrive</a>
-        </div>
-      </div>
-    </div>
+                <!-- FETCH BAR -->
+                <div class="fetch-bar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9800" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2H3v16h5v4l4-4h5l4-4V2z"/><line x1="9" y1="9" x2="15" y2="9"/><line x1="9" y1="13" x2="12" y2="13"/></svg>
+                    <input type="text" id="url-input" placeholder="Paste 4khdhub.click page URL here..." value="https://4khdhub.click/">
+                    <button class="btn-fetch" id="fetch-btn" onclick="fetchPage()">⚡ Load Page</button>
+                    <div class="fetch-status" id="fetch-status">Enter any 4khdhub.click URL to auto-load and decode download links.</div>
+                </div>
+                <!-- PROXY INFO -->
+                <div class="proxy-info" id="proxy-info">
+                    <span>🛡️ <strong>Proxy chain:</strong> <span id="proxy-list-display"></span></span>
+                    <span style="margin-left:auto;">If all proxies fail, try again later or <a onclick="toggleCustomProxy()">use your own proxy</a>.</span>
+                </div>
+                <div id="custom-proxy-row" class="hidden" style="display:flex;gap:.5rem;margin-top:.5rem;align-items:center;">
+                    <input type="text" id="custom-proxy-input" placeholder="https://your-cors-proxy.com/?url=" style="flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:8px;color:#fff;padding:.45rem .7rem;font-size:.8rem;font-family:'Open Sans',sans-serif;">
+                    <button onclick="saveCustomProxy()" style="background:#22c55e;color:#000;border:none;border-radius:6px;padding:.45rem .8rem;font-weight:600;font-size:.75rem;cursor:pointer;font-family:'Open Sans',sans-serif;">Save</button>
+                    <button onclick="clearCustomProxy()" style="background:rgba(255,255,255,.1);color:#fff;border:none;border-radius:6px;padding:.45rem .8rem;font-size:.75rem;cursor:pointer;font-family:'Open Sans',sans-serif;">Clear</button>
+                </div>
 
-    <!-- Pack 5 -->
-    <div class="dl-card" onclick="toggleCard(this)">
-      <div class="dl-card-head">
-        <span class="quality-badge q-1080">1080p</span>
-        <div class="dl-card-info">
-          <div class="dl-card-name">If Wishes Could Kill S01 HEVC</div>
-          <div class="dl-card-tags">
-            <span class="tag tag-nf">NF</span>
-            <span class="tag tag-webdl">WEB-DL</span>
-            <span class="tag tag-hevc">H265</span>
-          </div>
-        </div>
-        <span class="dl-card-size">10.07 GB</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="dl-body">
-        <div class="filename-box">
-          <div class="filename-label">Filename</div>
-          If.Wishes.Could.Kill.S01.1080p.NF.WEB-DL.Multi.DDP5.1.H.265-4kHdHub.Com.zip
-        </div>
-        <div class="meta-row">
-          <div class="meta-item"><span class="meta-key">Quality</span><span class="meta-val">1080p</span></div>
-          <div class="meta-item"><span class="meta-key">Source</span><span class="meta-val">NF WEB-DL</span></div>
-          <div class="meta-item"><span class="meta-key">Audio</span><span class="meta-val">Hindi, Telugu, English, Korean</span></div>
-        </div>
-        <div class="dl-links">
-          <a href="https://hubcloud.foo/drive/1efzfzuj5n1er91" class="dl-btn btn-hubcloud">☁ HubCloud</a>
-          <a href="https://hubdrive.space/file/9075737026" class="dl-btn btn-hubdrive">💾 HubDrive</a>
-        </div>
-      </div>
-    </div>
+                <!-- CONTENT AREA -->
+                <section class="latest-releases" id="content-section">
+                    <div class="latest-releases-header">
+                        <h2 class="latest-releases-title" id="section-title">Latest Releases</h2>
+                        <div id="section-links" style="display:flex;gap:1rem;font-size:.875rem;"></div>
+                    </div>
+                    <div class="card-grid" id="card-grid">
+                        <!-- Skeleton placeholders -->
+                        <div class="skeleton-card skeleton"><div class="skeleton-img skeleton"></div><div class="skeleton-text skeleton"></div><div class="skeleton-text2 skeleton"></div></div>
+                        <div class="skeleton-card skeleton"><div class="skeleton-img skeleton"></div><div class="skeleton-text skeleton"></div><div class="skeleton-text2 skeleton"></div></div>
+                        <div class="skeleton-card skeleton"><div class="skeleton-img skeleton"></div><div class="skeleton-text skeleton"></div><div class="skeleton-text2 skeleton"></div></div>
+                        <div class="skeleton-card skeleton"><div class="skeleton-img skeleton"></div><div class="skeleton-text skeleton"></div><div class="skeleton-text2 skeleton"></div></div>
+                        <div class="skeleton-card skeleton"><div class="skeleton-img skeleton"></div><div class="skeleton-text skeleton"></div><div class="skeleton-text2 skeleton"></div></div>
+                        <div class="skeleton-card skeleton"><div class="skeleton-img skeleton"></div><div class="skeleton-text skeleton"></div><div class="skeleton-text2 skeleton"></div></div>
+                    </div>
+                    <div class="pagination-container" id="pagination-container"></div>
+                </section>
 
-    <!-- Pack 6 -->
-    <div class="dl-card" onclick="toggleCard(this)">
-      <div class="dl-card-head">
-        <span class="quality-badge q-720">720p</span>
-        <div class="dl-card-info">
-          <div class="dl-card-name">If Wishes Could Kill S01 AVC</div>
-          <div class="dl-card-tags">
-            <span class="tag tag-nf">NF</span>
-            <span class="tag tag-webdl">WEB-DL</span>
-            <span class="tag tag-avc">H264</span>
-          </div>
-        </div>
-        <span class="dl-card-size">4.98 GB</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="dl-body">
-        <div class="filename-box">
-          <div class="filename-label">Filename</div>
-          If.Wishes.Could.Kill.S01.720p.NF.WEB-DL.Multi.AAC5.1.H.264-4kHdHub.Com.zip
-        </div>
-        <div class="meta-row">
-          <div class="meta-item"><span class="meta-key">Quality</span><span class="meta-val">720p</span></div>
-          <div class="meta-item"><span class="meta-key">Source</span><span class="meta-val">NF WEB-DL</span></div>
-          <div class="meta-item"><span class="meta-key">Audio</span><span class="meta-val">Hindi, Telugu, English, Korean</span></div>
-        </div>
-        <div class="dl-links">
-          <a href="https://hubcloud.foo/drive/cky1c4rciu0ihh7" class="dl-btn btn-hubcloud">☁ HubCloud</a>
-          <a href="https://hubdrive.space/file/5685037681" class="dl-btn btn-hubdrive">💾 HubDrive</a>
-        </div>
-      </div>
-    </div>
+                <!-- DOWNLOAD PAGE VIEW (hidden until a show page is loaded) -->
+                <div id="download-view" class="hidden"></div>
 
-    <!-- Pack 7 -->
-    <div class="dl-card" onclick="toggleCard(this)">
-      <div class="dl-card-head">
-        <span class="quality-badge q-720">720p</span>
-        <div class="dl-card-info">
-          <div class="dl-card-name">If Wishes Could Kill S01 HEVC</div>
-          <div class="dl-card-tags">
-            <span class="tag tag-nf">NF</span>
-            <span class="tag tag-webdl">WEB-DL</span>
-            <span class="tag tag-hevc">H265</span>
-          </div>
-        </div>
-        <span class="dl-card-size">2.44 GB</span>
-        <span class="chevron">▾</span>
-      </div>
-      <div class="dl-body">
-        <div class="filename-box">
-          <div class="filename-label">Filename</div>
-          If.Wishes.Could.Kill.S01.720p.NF.WEB-DL.Multi.AAC5.1.H.265-4kHdHub.Com.zip
-        </div>
-        <div class="meta-row">
-          <div class="meta-item"><span class="meta-key">Quality</span><span class="meta-val">720p</span></div>
-          <div class="meta-item"><span class="meta-key">Source</span><span class="meta-val">NF WEB-DL</span></div>
-          <div class="meta-item"><span class="meta-key">Audio</span><span class="meta-val">Hindi, Telugu, English, Korean</span></div>
-        </div>
-        <div class="dl-links">
-          <a href="https://hubcloud.foo/drive/6hetfs5lzwbxsfb" class="dl-btn btn-hubcloud">☁ HubCloud</a>
-          <a href="https://hubdrive.space/file/3540197821" class="dl-btn btn-hubdrive">💾 HubDrive</a>
-        </div>
-      </div>
-    </div>
-  </div>
+            </div>
+        </main>
 
-  <!-- SINGLE EPISODES -->
-  <div class="section-gap">
-    <div class="section-header">
-      <span class="section-title">📺 Single Ep's</span>
-      <span class="section-count">5 Quality's</span>
-      <div class="section-line"></div>
-    </div>
+        <footer class="border-t bg-background">
+            <div class="container" style="padding-top:2rem;padding-bottom:2rem;">
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;text-align:center;">
+                    <div>
+                        <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:1rem;">4KHDHub</h3>
+                        <p class="text-muted-foreground" style="font-size:.875rem;">Your one-stop destination for high-quality movies and TV shows in various formats.</p>
+                    </div>
+                    <div>
+                        <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:1rem;">Quick Links</h3>
+                        <ul style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;font-size:.875rem;list-style:none;">
+                            <li><a href="https://4khdhub.click/about" class="text-muted-foreground" target="_blank">About Us</a></li>
+                            <li><a href="https://4khdhub.click/contact" class="text-muted-foreground" target="_blank">Contact Us</a></li>
+                            <li><a href="https://4khdhub.click/dmca" class="text-muted-foreground" target="_blank">DMCA</a></li>
+                            <li><a href="https://4khdhub.click/privacy-policy" class="text-muted-foreground" target="_blank">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size:1.125rem;font-weight:600;margin-bottom:1rem;">Connect</h3>
+                        <p class="text-muted-foreground" style="font-size:.875rem;">Stay updated with the latest releases and news.</p>
+                    </div>
+                </div>
+                <div style="margin-top:2rem;border-top:1px solid hsl(var(--border));padding-top:2rem;text-align:center;">
+                    <p class="text-muted-foreground" style="font-size:.75rem;">© <span id="current-year">2025</span> 4KHDHub Clone - All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
 
-    <div class="ep-card">
-      <div class="ep-card-info">
-        <div class="ep-card-name">S01 AVC 1080p WEB-DL H264</div>
-        <div class="ep-card-sub">
-          <span>Episodes: <strong>08</strong></span>
-          <span>Quality: <strong>1080p</strong></span>
-          <span>Source: <strong>WEB-DL</strong></span>
-        </div>
-      </div>
-      <a href="https://telegra.ph/If-S01-S01-AVC-1080p-WEB-DL-H264-04-25-04-25" class="ep-link" target="_blank">View ↗</a>
-    </div>
+        <button id="back-to-top" aria-label="Back to top">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+        </button>
 
-    <div class="ep-card">
-      <div class="ep-card-info">
-        <div class="ep-card-name">S01 HEVC 1080p WEB-DL H265</div>
-        <div class="ep-card-sub">
-          <span>Episodes: <strong>08</strong></span>
-          <span>Quality: <strong>1080p</strong></span>
-          <span>Source: <strong>WEB-DL</strong></span>
-        </div>
-      </div>
-      <a href="https://telegra.ph/If-S01-S01-HEVC-1080p-WEB-DL-H265-04-25-04-25" class="ep-link" target="_blank">View ↗</a>
-    </div>
+    </div><!-- end flex wrapper -->
 
-    <div class="ep-card">
-      <div class="ep-card-info">
-        <div class="ep-card-name">S01 DoVi-HDR 1080p WEB-DL H265</div>
-        <div class="ep-card-sub">
-          <span>Episodes: <strong>08</strong></span>
-          <span>Quality: <strong>1080p</strong></span>
-          <span>Source: <strong>WEB-DL</strong></span>
-        </div>
-      </div>
-      <a href="https://telegra.ph/If-S01-S01-DoVi-HDR-1080p-WEB-DL-HDR-H265-04-25-04-25" class="ep-link" target="_blank">View ↗</a>
-    </div>
+    <script>
+        // ==========================================
+        //  DECODE LOGIC (same as Python script)
+        // ==========================================
+        function rot13(text) {
+            return text.replace(/[a-zA-Z]/g, c => {
+                const base = c <= 'Z' ? 65 : 97;
+                return String.fromCharCode(((c.charCodeAt(0) - base + 13) % 26) + base);
+            });
+        }
 
-    <div class="ep-card">
-      <div class="ep-card-info">
-        <div class="ep-card-name">S01 DoVi-HDR 2160p WEB-DL DoVi HDR H265</div>
-        <div class="ep-card-sub">
-          <span>Episodes: <strong>08</strong></span>
-          <span>Quality: <strong>2160p</strong></span>
-          <span>Languages: <strong>Hindi, Telugu, English</strong></span>
-        </div>
-      </div>
-      <a href="https://telegra.ph/If-Wishes-S01-S01-DoVi-HDR-2160p-WEB-DL-DoVi-HDR-H265-04-25-04-25" class="ep-link" target="_blank">View ↗</a>
-    </div>
+        function b64decode(str) {
+            try { return atob(str); } catch (e) { return null; }
+        }
 
-    <div class="ep-card">
-      <div class="ep-card-info">
-        <div class="ep-card-name">S01 HEVC 2160p WEB-DL SDR H265</div>
-        <div class="ep-card-sub">
-          <span>Episodes: <strong>08</strong></span>
-          <span>Quality: <strong>2160p</strong></span>
-          <span>Languages: <strong>Hindi, Telugu, English</strong></span>
-        </div>
-      </div>
-      <a href="https://telegra.ph/If-Wishes-S01-S01-HEVC-2160p-WEB-DL-SDR-H265-04-25-04-25" class="ep-link" target="_blank">View ↗</a>
-    </div>
-  </div>
+        function decodeGadgetsLink(encodedVal) {
+            try {
+                const s1 = b64decode(encodedVal);
+                if (!s1) return null;
+                const s2 = b64decode(s1);
+                if (!s2) return null;
+                const s3 = rot13(s2);
+                const s4 = b64decode(s3);
+                if (!s4) return null;
+                const data = JSON.parse(s4);
+                if (data && data.o) {
+                    return b64decode(data.o);
+                }
+                return null;
+            } catch (e) {
+                return null;
+            }
+        }
 
-  <footer>4KHDHub · If Wishes Could Kill S01 (2026)</footer>
-</div>
+        function extractEncodedFromGadgetsUrl(url) {
+            try {
+                const u = new URL(url);
+                const id = u.searchParams.get('id');
+                if (id) return id;
+                const hash = u.hash.replace('#', '');
+                if (hash) return hash;
+            } catch (e) {}
+            return null;
+        }
 
-<script>
-  function toggleCard(card) {
-    card.classList.toggle('open');
-  }
-</script>
+        function tryDecodeGadgetsUrl(url) {
+            const encoded = extractEncodedFromGadgetsUrl(url);
+            if (encoded) {
+                return decodeGadgetsLink(encoded);
+            }
+            return null;
+        }
+
+        // ==========================================
+        //  CORS PROXY SYSTEM (improved with more fallbacks)
+        // ==========================================
+        const DEFAULT_PROXIES = [
+            { name: 'CodeTabs', fn: url => `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent(url)}` },
+            { name: 'AllOrigins', fn: url => `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}` },
+            { name: 'CORSProxy.io', fn: url => `https://corsproxy.io/?${encodeURIComponent(url)}` },
+            { name: 'CORS.eu.org', fn: url => `https://cors.eu.org/${encodeURIComponent(url)}` },
+            { name: 'CORS.sh', fn: url => `https://proxy.cors.sh/${encodeURIComponent(url)}` },
+            { name: 'CORS-Anywhere', fn: url => `https://cors-anywhere.herokuapp.com/${encodeURIComponent(url)}` },
+        ];
+
+        function getCustomProxy() {
+            try {
+                return localStorage.getItem('custom_cors_proxy');
+            } catch (e) {
+                return null;
+            }
+        }
+
+        function setCustomProxy(url) {
+            try {
+                localStorage.setItem('custom_cors_proxy', url);
+            } catch (e) {}
+        }
+
+        function clearCustomProxyStorage() {
+            try {
+                localStorage.removeItem('custom_cors_proxy');
+            } catch (e) {}
+        }
+
+        function getProxies() {
+            const custom = getCustomProxy();
+            const list = [];
+            if (custom) {
+                list.push({ name: 'Custom', fn: url => custom.replace(/\{url\}/gi, encodeURIComponent(url)).includes(
+                        '://') ? custom.replace(/\{url\}/gi, encodeURIComponent(url)) : custom +
+                    encodeURIComponent(url) });
+            }
+            return list.concat(DEFAULT_PROXIES);
+        }
+
+        function updateProxyListDisplay() {
+            const el = document.getElementById('proxy-list-display');
+            if (el) {
+                const proxies = getProxies();
+                el.textContent = proxies.map(p => p.name).join(' → ');
+            }
+        }
+
+        async function fetchWithProxy(url, proxyIndex = 0, triedProxies = []) {
+            const proxies = getProxies();
+            if (proxyIndex >= proxies.length) {
+                throw new Error('All ' + proxies.length + ' proxies failed. Tried: ' + triedProxies.join(', ') +
+                    '. Try again later or add a custom proxy.');
+            }
+
+            const proxy = proxies[proxyIndex];
+            const proxyUrl = proxy.fn(url);
+            const statusEl = document.getElementById('fetch-status');
+
+            if (statusEl) {
+                statusEl.textContent =
+                    `Trying proxy ${proxyIndex + 1}/${proxies.length}: ${proxy.name}...`;
+            }
+
+            try {
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+                const res = await fetch(proxyUrl, {
+                    signal: controller.signal,
+                    headers: {
+                        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                    }
+                });
+                clearTimeout(timeoutId);
+
+                if (!res.ok) {
+                    throw new Error(`HTTP ${res.status} from ${proxy.name}`);
+                }
+
+                const text = await res.text();
+
+                // Validate we got actual HTML content (not an error page)
+                if (text.length < 100 && !text.includes('<')) {
+                    throw new Error(`Empty/invalid response from ${proxy.name}`);
+                }
+
+                if (statusEl) {
+                    statusEl.textContent = `✓ Page loaded via ${proxy.name}! Parsing...`;
+                }
+                return text;
+
+            } catch (e) {
+                const reason = e.name === 'AbortError' ? 'timeout' : e.message;
+                triedProxies.push(`${proxy.name}(${reason})`);
+
+                if (statusEl) {
+                    statusEl.textContent =
+                        `✗ ${proxy.name} failed (${reason}). Trying next proxy...`;
+                }
+
+                // Small delay before trying next proxy
+                await new Promise(r => setTimeout(r, 300));
+                return fetchWithProxy(url, proxyIndex + 1, triedProxies);
+            }
+        }
+
+        // ==========================================
+        //  PAGE DETECTION & PARSING
+        // ==========================================
+        function detectPageType(url, html) {
+            if (html.includes('download-item') || html.includes('episode-download-item') ||
+                html.includes('Download Complete Season') || html.includes('Download Individual Episodes') ||
+                html.includes('Zip/Pack') || html.includes('Single EP') ||
+                html.includes('gadgetsweb') || html.includes('hubcloud') || html.includes('hubdrive')) {
+                return 'detail';
+            }
+            if (html.includes('movie-card') || html.includes('card-grid')) {
+                return 'listing';
+            }
+            // If we see download-related terms, treat as detail
+            if (html.includes('Download') && (html.includes('.mkv') || html.includes('.mp4') || html.includes(
+                    '480p') || html.includes('720p') || html.includes('1080p') || html.includes('2160p'))) {
+                return 'detail';
+            }
+            return 'listing';
+        }
+
+        function parseListingPage(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+
+            const cards = [];
+            doc.querySelectorAll('a.movie-card').forEach(card => {
+                const href = card.getAttribute('href') || '';
+                const title = card.querySelector('.movie-card-title')?.textContent?.trim() || '';
+                const meta = card.querySelector('.movie-card-meta')?.textContent?.trim() || '';
+                const img = card.querySelector('img')?.getAttribute('src') || '';
+                const formats = [...card.querySelectorAll('.movie-card-format')].map(f => f.textContent
+                .trim());
+                const badges = card.querySelector('.quality-badges')?.innerHTML || '';
+                cards.push({ href, title, meta, img, formats, badges });
+            });
+
+            // If no .movie-card found, try broader selectors
+            if (cards.length === 0) {
+                doc.querySelectorAll('a[href*="/20"]').forEach(card => {
+                    const href = card.getAttribute('href') || '';
+                    const img = card.querySelector('img')?.getAttribute('src') || '';
+                    const title = card.querySelector('h2,h3,h4,[class*="title"]')?.textContent
+                        ?.trim() || card.textContent?.trim()?.slice(0, 80) || '';
+                    if (href && title && href.includes('4khdhub.click')) {
+                        cards.push({ href, title, meta: '', img, formats: [], badges: '' });
+                    }
+                });
+            }
+
+            // Pagination
+            const pagination = [];
+            doc.querySelectorAll('.pagination-item').forEach(item => {
+                const href = item.getAttribute('href') || '';
+                const text = item.textContent.trim();
+                const active = item.classList.contains('active');
+                const isNext = item.classList.contains('pagination-next');
+                const isPrev = item.classList.contains('pagination-prev');
+                pagination.push({ href, text, active, isNext, isPrev, html: item.outerHTML });
+            });
+
+            // Also try WordPress-style pagination
+            if (pagination.length === 0) {
+                doc.querySelectorAll('.page-numbers, .nav-links a, .pagination a').forEach(item => {
+                    const href = item.getAttribute('href') || '';
+                    const text = item.textContent.trim();
+                    const active = item.classList.contains('current') || item.classList.contains(
+                        'active');
+                    pagination.push({ href, text, active, isNext: false, isPrev: false, html: item
+                            .outerHTML });
+                });
+            }
+
+            const sectionTitle = doc.querySelector('.latest-releases-title')?.textContent?.trim() ||
+                doc.querySelector('h1')?.textContent?.trim() ||
+                doc.querySelector('title')?.textContent?.trim() ||
+                'Latest Releases';
+
+            return { cards, pagination, sectionTitle };
+        }
+
+        function parseDetailPage(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const result = { title: '', items: [] };
+
+            result.title = doc.querySelector('h1, .entry-title, .post-title')?.textContent?.trim() ||
+                doc.querySelector('title')?.textContent?.trim() || 'Download Links';
+
+            // Try to find download items
+            const itemSelectors = [
+                '.download-item', '.episode-download-item',
+                '[class*="download"]', '[class*="episode"]'
+            ];
+
+            let items = [];
+            for (const sel of itemSelectors) {
+                items = [...doc.querySelectorAll(sel)];
+                if (items.length > 0) break;
+            }
+
+            if (items.length === 0) {
+                // Fall back: find all links with hubcloud/hubdrive/gadgetsweb
+                const allLinks = [...doc.querySelectorAll('a[href]')].filter(a => {
+                    const h = a.href || '';
+                    return h.includes('gadgetsweb') || h.includes('hubcloud') || h.includes(
+                    'hubdrive');
+                });
+
+                allLinks.forEach(a => {
+                    result.items.push({
+                        title: a.closest('[class]')?.querySelector('h3,h4,strong')?.textContent
+                            ?.trim() || a.textContent.trim(),
+                        links: [{ text: a.textContent.trim(), href: a.href }]
+                    });
+                });
+            } else {
+                items.forEach(item => {
+                    const titleEl = item.querySelector(
+                            'h3,h4,strong,.file-title,.episode-file-title') || item.querySelector(
+                        '[class*="title"]');
+                    const title = titleEl?.textContent?.trim() || '';
+                    const size = (item.innerHTML.match(/([\d.]+\s?[GM]B)/) || [])[1] || '';
+                    const quality = (item.innerHTML.match(/(\d{3,4}p)/) || [])[1] || '';
+                    const links = [...item.querySelectorAll('a[href]')].map(a => ({
+                        text: a.textContent.trim(),
+                        href: a.href
+                    })).filter(l => l.href && l.href !== '#');
+                    result.items.push({ title, size, quality, links });
+                });
+            }
+
+            // If no structured items, try to parse the raw HTML for patterns
+            if (result.items.length === 0) {
+                const linkPattern =
+                    /href=["'](https?:\/\/[^"']+gadgetsweb[^"']+|https?:\/\/[^"']+hubcloud[^"']+|https?:\/\/[^"']+hubdrive[^"']+)["']/gi;
+                let match;
+                const seen = new Set();
+                while ((match = linkPattern.exec(html)) !== null) {
+                    const linkUrl = match[1];
+                    if (!seen.has(linkUrl)) {
+                        seen.add(linkUrl);
+                        result.items.push({ title: 'Download Link', links: [{ text: 'Download', href: linkUrl }] });
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        // ==========================================
+        //  RENDER FUNCTIONS
+        // ==========================================
+        function renderListingPage(data, currentUrl) {
+            document.getElementById('content-section').classList.remove('hidden');
+            document.getElementById('download-view').classList.add('hidden');
+            document.getElementById('section-title').textContent = data.sectionTitle;
+
+            const grid = document.getElementById('card-grid');
+            grid.innerHTML = '';
+
+            if (data.cards.length === 0) {
+                grid.innerHTML =
+                    '<div style="grid-column:1/-1;text-align:center;padding:3rem;opacity:.5;">No items found on this page. The page structure may have changed.</div>';
+                return;
+            }
+
+            data.cards.forEach(card => {
+                const div = document.createElement('a');
+                div.className = 'movie-card';
+                div.href = '#';
+                div.setAttribute('data-url', card.href);
+                div.setAttribute('aria-label', card.title + ' details');
+
+                const formatsHtml = card.formats.map(f =>
+                    `<span class="movie-card-format">${escHtml(f)}</span>`).join('');
+                const badgesHtml = card.badges || '';
+
+                div.innerHTML = `
+                    <div class="movie-card-image">
+                        <div class="quality-badges">${badgesHtml}</div>
+                        ${card.img ? `<img src="${escHtml(card.img)}" alt="${escHtml(card.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">` : ''}
+                        <div style="width:100%;height:100%;background:#1a1a2e;display:${card.img ? 'none' : 'flex'};align-items:center;justify-content:center;font-size:2rem;">🎬</div>
+                        <div class="movie-card-overlay"><div class="movie-card-formats">${formatsHtml}</div></div>
+                    </div>
+                    <div class="movie-card-content">
+                        <h3 class="movie-card-title">${escHtml(card.title)}</h3>
+                        <p class="movie-card-meta">${escHtml(card.meta)}</p>
+                    </div>`;
+
+                div.addEventListener('click', e => {
+                    e.preventDefault();
+                    if (card.href) {
+                        document.getElementById('url-input').value = card.href;
+                        fetchPage();
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+
+                grid.appendChild(div);
+            });
+
+            // Pagination
+            const pagCont = document.getElementById('pagination-container');
+            pagCont.innerHTML = '';
+            if (data.pagination.length > 0) {
+                const pagDiv = document.createElement('div');
+                pagDiv.className = 'pagination';
+                data.pagination.forEach(item => {
+                    if (item.isNext || item.isPrev) {
+                        const a = document.createElement('a');
+                        a.className = 'pagination-item ' + (item.isNext ? 'pagination-next' :
+                            'pagination-prev');
+                        a.innerHTML = item.isNext ?
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>' :
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"></polyline></svg>';
+                        if (item.href) {
+                            a.href = '#';
+                            a.addEventListener('click', e => {
+                                e.preventDefault();
+                                document.getElementById('url-input').value = item.href;
+                                fetchPage();
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            });
+                        }
+                        pagDiv.appendChild(a);
+                    } else {
+                        const a = document.createElement('a');
+                        a.className = 'pagination-item' + (item.active ? ' active' : '');
+                        a.textContent = item.text;
+                        if (item.href && !item.active) {
+                            a.href = '#';
+                            a.addEventListener('click', e => {
+                                e.preventDefault();
+                                document.getElementById('url-input').value = item
+                                    .href;
+                                fetchPage();
+                                window.scrollTo({ top: 0, behavior: 'smooth' });
+                            });
+                        }
+                        pagDiv.appendChild(a);
+                    }
+                });
+                pagCont.appendChild(pagDiv);
+            }
+        }
+
+        function renderDetailPage(data, sourceUrl) {
+            document.getElementById('content-section').classList.add('hidden');
+            const view = document.getElementById('download-view');
+            view.classList.remove('hidden');
+
+            let html = `
+            <div style="margin:1.5rem 0;">
+                <button onclick="goBack()" style="background:rgba(255,152,0,.12);border:1px solid rgba(255,152,0,.3);border-radius:8px;color:#ff9800;padding:.45rem 1rem;cursor:pointer;font-size:.85rem;font-family:'Open Sans',sans-serif;margin-bottom:1.5rem;">← Back</button>
+                <h1 style="font-size:1.4rem;font-weight:700;margin-bottom:.5rem;">${escHtml(data.title)}</h1>
+                <a href="${escHtml(sourceUrl)}" target="_blank" style="font-size:.75rem;color:rgba(255,152,0,.7);word-break:break-all;">🔗 ${escHtml(sourceUrl)}</a>
+            </div>`;
+
+            if (data.items.length === 0) {
+                html +=
+                    '<div style="padding:3rem;text-align:center;opacity:.5;">No download links found on this page. The page structure may have changed or the content requires JavaScript to render.</div>';
+            } else {
+                html += `<div style="display:flex;flex-direction:column;gap:1rem;">`;
+                data.items.forEach((item, idx) => {
+                    const gadgetsLinks = (item.links || []).filter(l => l.href && l.href.includes(
+                        'gadgetsweb'));
+                    const directLinks = (item.links || []).filter(l => l.href && !l.href.includes(
+                        'gadgetsweb'));
+
+                    html += `
+                    <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem 1.25rem;">
+                        ${item.title ? `<div style="font-weight:600;margin-bottom:.5rem;font-size:.95rem;">${escHtml(item.title)}</div>` : ''}
+                        <div style="display:flex;flex-wrap:wrap;gap:.4rem;font-size:.75rem;margin-bottom:.75rem;opacity:.65;">
+                            ${item.quality ? `<span style="background:rgba(255,152,0,.15);color:#ff9800;border:1px solid rgba(255,152,0,.3);padding:2px 8px;border-radius:4px;">${escHtml(item.quality)}</span>` : ''}
+                            ${item.size ? `<span style="background:rgba(255,255,255,.07);padding:2px 8px;border-radius:4px;">${escHtml(item.size)}</span>` : ''}
+                        </div>
+                        <div style="display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;">`;
+
+                    // Gadgetsweb links → show decode button
+                    gadgetsLinks.forEach((link, li) => {
+                        const btnId = `decode-${idx}-${li}`;
+                        const resultId = `result-${idx}-${li}`;
+                        const linkText = link.text || 'Download';
+                        const directDecode = tryDecodeGadgetsUrl(link.href);
+
+                        if (directDecode) {
+                            html +=
+                                `<a href="${escHtml(directDecode)}" target="_blank" class="real-link">✓ ${escHtml(linkText)}</a>`;
+                        } else {
+                            html += `
+                            <button class="decode-btn" id="${btnId}" onclick="decodeLink('${escHtml(link.href)}', '${btnId}', '${resultId}', '${escHtml(linkText)}')">
+                                🔓 Decode ${escHtml(linkText)}
+                            </button>
+                            <span id="${resultId}"></span>`;
+                        }
+                    });
+
+                    // Direct links
+                    directLinks.forEach(link => {
+                        const icon = link.href.includes('hubcloud') ? '☁' : link.href.includes(
+                            'hubdrive') ? '💾' : '🔗';
+                        html +=
+                            `<a href="${escHtml(link.href)}" target="_blank" class="real-link">${icon} ${escHtml(link.text || 'Download')}</a>`;
+                    });
+
+                    html += `</div></div>`;
+                });
+                html += `</div>`;
+            }
+
+            view.innerHTML = html;
+        }
+
+        // Decode a gadgetsweb link via proxy
+        async function decodeLink(url, btnId, resultId, label) {
+            const btn = document.getElementById(btnId);
+            const result = document.getElementById(resultId);
+            if (!btn || !result) return;
+
+            btn.disabled = true;
+            btn.classList.add('loading');
+            btn.innerHTML = `<span class="spinner"></span> Decoding...`;
+            result.innerHTML = '';
+
+            // First try: decode from URL param directly
+            const direct = tryDecodeGadgetsUrl(url);
+            if (direct) {
+                btn.classList.add('hidden');
+                result.innerHTML =
+                    `<a href="${escHtml(direct)}" target="_blank" class="real-link">✓ ${escHtml(label)}</a>`;
+                return;
+            }
+
+            // Second try: fetch the gadgetsweb page via proxy
+            try {
+                const html = await fetchWithProxy(url);
+
+                let encoded = null;
+                const match1 = html.match(/'o','(.*?)'/);
+                const match2 = html.match(/var data = "(.*?)"/);
+                const match3 = html.match(/"o"\s*:\s*"(.*?)"/);
+                const match4 = html.match(/'o'\s*:\s*'(.*?)'/);
+                if (match1) encoded = match1[1];
+                else if (match2) encoded = match2[1];
+                else if (match3) encoded = match3[1];
+                else if (match4) encoded = match4[1];
+
+                if (encoded) {
+                    const decoded = decodeGadgetsLink(encoded);
+                    if (decoded) {
+                        btn.classList.add('hidden');
+                        result.innerHTML =
+                            `<a href="${escHtml(decoded)}" target="_blank" class="real-link">✓ ${escHtml(label)}</a>`;
+                        return;
+                    }
+                }
+
+                // Fallback: look for direct redirect
+                const redirectMatch = html.match(/window\.location(?:\.href)?\s*=\s*['"]([^'"]+)['"]/);
+                if (redirectMatch) {
+                    btn.classList.add('hidden');
+                    result.innerHTML =
+                        `<a href="${escHtml(redirectMatch[1])}" target="_blank" class="real-link">✓ ${escHtml(label)}</a>`;
+                    return;
+                }
+
+                btn.disabled = false;
+                btn.classList.remove('loading');
+                btn.innerHTML = `🔓 Decode ${escHtml(label)}`;
+                result.innerHTML = `<span class="decode-fail">Could not decode</span>`;
+            } catch (e) {
+                btn.disabled = false;
+                btn.classList.remove('loading');
+                btn.innerHTML = `🔓 Decode ${escHtml(label)}`;
+                result.innerHTML = `<span class="decode-fail">Network error: ${escHtml(e.message)}</span>`;
+            }
+        }
+
+        // ==========================================
+        //  MAIN FETCH FUNCTION
+        // ==========================================
+        let lastListingData = null;
+        let lastListingUrl = null;
+
+        async function fetchPage() {
+            let url = document.getElementById('url-input').value.trim();
+            if (!url) return;
+            if (!url.startsWith('http')) url = 'https://' + url;
+
+            const btn = document.getElementById('fetch-btn');
+            const status = document.getElementById('fetch-status');
+
+            btn.disabled = true;
+            btn.textContent = '⏳ Loading...';
+            status.textContent = 'Initializing...';
+
+            // Show skeletons
+            const grid = document.getElementById('card-grid');
+            grid.innerHTML = Array(6).fill(
+                '<div class="skeleton-card skeleton"><div class="skeleton-img skeleton"></div><div class="skeleton-text skeleton"></div><div class="skeleton-text2 skeleton"></div></div>'
+                ).join('');
+            document.getElementById('content-section').classList.remove('hidden');
+            document.getElementById('download-view').classList.add('hidden');
+            document.getElementById('pagination-container').innerHTML = '';
+
+            try {
+                const html = await fetchWithProxy(url);
+                status.textContent = 'Page loaded! Parsing content...';
+
+                const type = detectPageType(url, html);
+
+                if (type === 'detail') {
+                    status.textContent = 'Detail page detected. Parsing download links...';
+                    const data = parseDetailPage(html);
+                    renderDetailPage(data, url);
+                    status.textContent =
+                        `✓ Found ${data.items.length} download item(s). Gadgetsweb links will be decoded on click.`;
+                } else {
+                    status.textContent = 'Listing page detected. Rendering cards...';
+                    const data = parseListingPage(html);
+                    lastListingData = data;
+                    lastListingUrl = url;
+                    renderListingPage(data, url);
+                    status.textContent =
+                        `✓ Loaded ${data.cards.length} items. Click any card to view download links.`;
+                }
+            } catch (e) {
+                status.textContent = `Error: ${e.message}. Try a different URL or add a custom proxy.`;
+                grid.innerHTML =
+                    `<div style="grid-column:1/-1;text-align:center;padding:3rem;opacity:.5;">Failed to load page. ${escHtml(e.message)}<br><br><small>All CORS proxies are currently unavailable. You can:<br>1. Try again later<br>2. <a onclick="toggleCustomProxy()" style="color:#ff9800;cursor:pointer;text-decoration:underline;">Add your own CORS proxy</a><br>3. Use a browser extension that disables CORS</small></div>`;
+            }
+
+            btn.disabled = false;
+            btn.textContent = '⚡ Load Page';
+        }
+
+        function goBack() {
+            if (lastListingData && lastListingUrl) {
+                document.getElementById('url-input').value = lastListingUrl;
+                renderListingPage(lastListingData, lastListingUrl);
+            } else {
+                document.getElementById('url-input').value = 'https://4khdhub.click/';
+                fetchPage();
+            }
+        }
+
+        function escHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g,
+                '&quot;').replace(/'/g, '&#39;');
+        }
+
+        // Custom proxy UI
+        function toggleCustomProxy() {
+            const row = document.getElementById('custom-proxy-row');
+            row.classList.toggle('hidden');
+            if (!row.classList.contains('hidden')) {
+                document.getElementById('custom-proxy-input').value = getCustomProxy() || '';
+                document.getElementById('custom-proxy-input').focus();
+            }
+        }
+
+        function saveCustomProxy() {
+            const input = document.getElementById('custom-proxy-input');
+            const val = input.value.trim();
+            if (val) {
+                setCustomProxy(val);
+                updateProxyListDisplay();
+                document.getElementById('custom-proxy-row').classList.add('hidden');
+                document.getElementById('fetch-status').textContent =
+                    '✓ Custom proxy saved! Ready to fetch.';
+            }
+        }
+
+        function clearCustomProxy() {
+            clearCustomProxyStorage();
+            updateProxyListDisplay();
+            document.getElementById('custom-proxy-row').classList.add('hidden');
+            document.getElementById('fetch-status').textContent = 'Custom proxy removed. Using defaults.';
+        }
+
+        // ==========================================
+        //  THEME + UI (from original main.js)
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            updateProxyListDisplay();
+
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcons = document.querySelectorAll('.theme-icon');
+
+            const getTheme = () => localStorage.getItem('theme') || (window.matchMedia(
+                '(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+            function swapLogo() {
+                const logo = document.getElementById('logo');
+                logo.src = document.documentElement.classList.contains('dark') ?
+                    'https://4khdhub.click/images/4KHDHUB-Bright-Logo.png' :
+                    'https://4khdhub.click/images/4KHDHUB-Dark-Logo.png';
+            }
+
+            const applyTheme = theme => {
+                if (theme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                    document.documentElement.classList.remove('light');
+                    themeIcons.forEach(i => { i.innerHTML =
+                            '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>'; });
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    themeIcons.forEach(i => { i.innerHTML =
+                            '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>'
+                        ; });
+                }
+                localStorage.setItem('theme', theme);
+                swapLogo();
+            };
+
+            applyTheme(getTheme());
+            themeToggle?.addEventListener('click', () => applyTheme(getTheme() === 'dark' ? 'light' :
+            'dark'));
+
+            // Mobile menu
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const header = document.querySelector('.header');
+            const backdrop = document.getElementById('mobile-menu-backdrop');
+            const closeBtn = document.getElementById('close-mobile-menu');
+
+            const openMenu = () => { mainNav.classList.add('open');
+                backdrop.classList.remove('hidden');
+                closeBtn.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+                header.style.backdropFilter = 'none'; };
+            const closeMenu = () => { mainNav.classList.remove('open');
+                backdrop.classList.add('hidden');
+                closeBtn.classList.add('hidden');
+                document.body.style.overflow = '';
+                header.style.backdropFilter = 'blur(16px)'; };
+
+            menuToggle?.addEventListener('click', openMenu);
+            backdrop?.addEventListener('click', closeMenu);
+            closeBtn?.addEventListener('click', closeMenu);
+            mainNav?.querySelectorAll('a:not(.dropdown-toggle)').forEach(a => a.addEventListener('click',
+                closeMenu));
+
+            // Dropdowns
+            document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                toggle.addEventListener('click', e => {
+                    e.preventDefault();
+                    if (window.innerWidth < 768) {
+                        const menu = toggle.closest('.dropdown')?.querySelector(
+                            '.dropdown-menu');
+                        menu?.classList.toggle('open');
+                        const svg = toggle.querySelector('svg');
+                        if (svg) svg.style.transform = menu?.classList.contains('open') ?
+                            'rotate(180deg)' : 'rotate(0deg)';
+                    }
+                });
+            });
+
+            // Search
+            const searchToggle = document.getElementById('search-toggle');
+            const searchOverlay = document.getElementById('search-overlay');
+            const closeSearch = document.getElementById('close-search');
+
+            searchToggle?.addEventListener('click', () => { searchOverlay.style.removeProperty(
+                    'display');
+                searchOverlay.classList.remove('hidden');
+                setTimeout(() => document.getElementById('search-main-input')?.focus(), 100); });
+            closeSearch?.addEventListener('click', () => { searchOverlay.classList.add('hidden'); });
+            searchOverlay?.addEventListener('click', e => { if (e.target === searchOverlay) searchOverlay
+                    .classList.add('hidden'); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') searchOverlay?.classList.add(
+                    'hidden'); });
+
+            document.getElementById('search-form-el')?.addEventListener('submit', e => {
+                e.preventDefault();
+                const q = document.getElementById('search-main-input')?.value?.trim();
+                if (q) window.open(`https://4khdhub.click/?s=${encodeURIComponent(q)}`, '_blank');
+            });
+
+            // Back to top
+            const btt = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                btt.style.opacity = window.scrollY > 300 ? '1' : '0';
+                btt.style.pointerEvents = window.scrollY > 300 ? 'auto' : 'none';
+            });
+            btt?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+            // URL input: press Enter
+            document.getElementById('url-input')?.addEventListener('keydown', e => { if (e.key === 'Enter')
+                    fetchPage(); });
+
+            // Auto-load the homepage
+            fetchPage();
+        });
+    </script>
 </body>
 </html>
